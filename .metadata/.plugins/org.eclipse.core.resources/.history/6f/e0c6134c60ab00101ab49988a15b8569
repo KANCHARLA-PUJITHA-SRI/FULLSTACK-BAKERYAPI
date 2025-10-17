@@ -1,0 +1,48 @@
+package com.klef.dev.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.practice.sdp.entity.Bakery;
+import com.practice.sdp.repository.BakeryRepository;
+
+@Service
+public class BakeryServiceImpl implements BakerySevice {
+
+    @Autowired
+    private BakeryRepository bakeryRepository;
+
+    @Override
+    public Bakery addItem(Bakery item) {
+        return bakeryRepository.save(item);
+    }
+
+    @Override
+    public List<Bakery> getAllItems() {
+        return bakeryRepository.findAll();
+    }
+
+    @Override
+    public Bakery getItemById(int id) {
+        Optional<Bakery> opt = bakeryRepository.findById(id);
+        return opt.orElse(null);
+    }
+
+    @Override
+    public List<Bakery> getItemsByCategory(String category) {
+        return bakeryRepository.findByCategory(category);
+    }
+
+    @Override
+    public Bakery updateItem(Bakery item) {
+        return bakeryRepository.save(item);
+    }
+
+    @Override
+    public void deleteItemById(int id) {
+        bakeryRepository.deleteById(id);
+    }
+}

@@ -1,0 +1,73 @@
+package com.klef.dev.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import com.klef.dev.entity.Bakery;
+import com.klef.dev.service.BakerySevice;
+
+@RestController
+@RequestMapping("/bakeryapi")
+@CrossOrigin(origins = "*")
+public class BakeryController {
+
+    @Autowired
+    private BakerySevice bakeryService;
+
+    @GetMapping("/")
+    public String home() {
+        return "Bakery API Running Successfully!";
+    }
+
+    // Add new bakery item
+    @PostMapping("/add")
+    public ResponseEntity<Bakery> addItem(@RequestBody Bakery item) {
+        Bakery savedItem = bakeryService.addItem(item);
+        return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
+    }
+
+    // Get all bakery items
+    @GetMapping("/all")
+    public ResponseEntity<List<Bakery>> getAllItems() {
+        List<Bakery> items = bakeryService.getAllItems();
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    // Get items by category
+    @GetMapping("/category/{category}")
+    public ResponseEntity<List<Bakery>> getItemsByCategory(@PathVariable String category) {
+        List<Bakery> items = bakeryService.getItemsByCategory(category);
+        if (!items.isEmpty()) {
+            return new ResponseEntity<>(items, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(List.of(), HttpStatus.OK); // return empty list if none
+        }
+    }
+
+    // Update bakery item
+    @PutMapping("/update")
+    public ResponseEntity<?> updateItem(@RequestBody Bakery item) {
+        Bakery existing = bakeryService.getItemById(item.getId());
+        if (existing != null) {
+            Bakery updatedItem = bakeryService.updateItem(item);
+            return new ResponseEntity<>(updatedItem, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Cannot update. Item with ID " + item.getId() + " not found.", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Delete bakery item
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteItem(@PathVariable int id) {
+        Bakery existing = bakeryService.getItemById(id);
+        if (existing != null) {
+            bakeryService.deleteItemById(id);
+            return new ResponseEntity<>("Bakery item with ID " + id + " deleted successfully.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Cannot delete. Item with ID " + id + " not found.", HttpStatus.NOT_FOUND);
+        }
+    }
+}

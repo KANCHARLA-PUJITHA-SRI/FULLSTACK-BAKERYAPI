@@ -1,0 +1,16 @@
+package com.klef.dev.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import com.klef.dev.entity.Bakery;
+import java.util.List;
+
+@Repository
+public interface BakeryRepository extends JpaRepository<Bakery, Integer> {
+    
+    // Find items by category
+    List<Bakery> findByCategory(String category);
+
+    // Optional: find item by name
+    Bakery findByItemName(String itemName);
+}
