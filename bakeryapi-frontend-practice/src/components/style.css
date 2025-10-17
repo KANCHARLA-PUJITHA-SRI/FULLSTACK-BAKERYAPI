@@ -1,0 +1,188 @@
+/* General Body */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #fff0f5; /* Very light pink */
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  color: #d81b60; /* Pinkish tone */
+  font-size: 2.5rem;
+}
+
+header .btn-primary {
+  padding: 10px 20px;
+  background: #e91e63; /* Highlighted button */
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+header .btn-primary:hover {
+  background: #c2185b;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center; align-items: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.modal input, .modal textarea, .modal select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal input:focus, .modal textarea:focus, .modal select:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 8px rgba(233,30,99,0.3);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.btn-primary { background: #e91e63; color: #fff; }
+.btn-success { background: #9c27b0; color: #fff; }
+.btn-secondary { background: #f8bbd0; color: #333; }
+.btn-danger { background: #f44336; color: #fff; }
+
+.btn-primary:hover { background: #c2185b; }
+.btn-success:hover { background: #7b1fa2; }
+.btn-secondary:hover { background: #f48fb1; }
+.btn-danger:hover { background: #d32f2f; }
+
+.btn-primary, .btn-success, .btn-secondary, .btn-danger {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Fetch Section */
+.fetch-section {
+  margin-bottom: 30px;
+}
+
+.fetch-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.fetch-box input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Cards */
+.interview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.fetched-card {
+  background: #fff0f5;
+  border-left: 5px solid #e91e63;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Alert */
+.alert {
+  text-align: center;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #e91e63;
+  color: #fff;
+}
+
+/* Select Dropdown */
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s ease-in-out;
+}
+
+select:focus {
+  outline: none;
+  border-color: #e91e63;
+  box-shadow: 0 0 8px rgba(233,30,99,0.3);
+}
+
+
